@@ -45,11 +45,11 @@ public class Main {
             }
             misclassifiedPoints = 0;
             image.cleanPage();
-            try {
-                Thread.sleep(30);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+//            try {
+//                Thread.sleep(30);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
         }
     }
 }

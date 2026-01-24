@@ -12,7 +12,20 @@ public class Image {
 
     public Image() {
         folder = new File("./src/Output");
-        if (folder.mkdirs()) {System.out.println("Made Output Folder.");}
+        if (folder.exists()) {
+            File[] children = folder.listFiles();
+            if (children != null) {
+                for (File child : children) {
+                    child.delete();
+                }
+            }
+            if (folder.delete()) {
+                System.out.println("Deleted previous Output Folder.");
+            }
+        }
+        if (folder.mkdirs()) {
+            System.out.println("Created new Output Folder.");
+        }
         Out = new BufferedImage(1024, 1024, BufferedImage.TYPE_INT_ARGB);
         cleanPage();
         createFile();
