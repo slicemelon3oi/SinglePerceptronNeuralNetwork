@@ -15,10 +15,8 @@ public class Main {
         System.out.println("1024x1024 Blank Image generated");
         System.out.print("m = ");
         float m = sc.nextFloat();
-        System.out.println();
         System.out.print("b = ");
         int b = sc.nextInt();
-        System.out.println();
         for (int i=0 ; i<no_of_points ; i++) {
             int x = (int) (Math.random()*1024-512);
             int y = (int) (Math.random()*1024-512);
@@ -26,33 +24,32 @@ public class Main {
             points[i] = new Point(x,y,ans);
         }
         System.out.println();
-        while (true) {
+        boolean check = true;
+        int misclassifiedPoints;
+        while (check) {
+            misclassifiedPoints = 0;
             for (Point pt : points) {
                 int[] pointData = pt.pointData;
                 p.guess(pointData);
                 image.drawPoint(pointData);
                 if (pointData[3] != pointData[4]) {
-                    System.out.println("x " + pointData[0]);
-                    System.out.println("y " + pointData[1]);
-                    System.out.println("bias " + pointData[2]);
-                    System.out.println("guess " + pointData[3]);
-                    System.out.println("answer " + pointData[4]);
-                    System.out.println();
+                    misclassifiedPoints++;
                 }
-
                 p.train(pointData);
             }
             image.createFile();
-            //System.out.print("exit = 0: ");
-            //int exit = sc.nextInt();
-            //if (exit == 0) {break;}
+            System.out.println("Misclassified Points: " + misclassifiedPoints);
+            System.out.println("File Number: " + (Image.fileNo-1));
+            if (misclassifiedPoints == 0) {
+                check = false;
+            }
+            misclassifiedPoints = 0;
             image.cleanPage();
             try {
                 Thread.sleep(30);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println();
         }
     }
 }

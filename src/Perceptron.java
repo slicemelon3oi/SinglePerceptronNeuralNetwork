@@ -1,6 +1,6 @@
 public class Perceptron {
     float[] weights = new float[3];
-    float LR = 0.5f;
+    float LR = 0.0002f;
 
     public float[] getWeights() {
         return weights;

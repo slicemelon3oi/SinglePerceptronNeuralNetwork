@@ -6,10 +6,13 @@ import java.io.File;
 public class Image {
     BufferedImage Out;
     Graphics2D OutG;
+    File folder;
     File OutF;
-    int fileNo = 0;
+    static int fileNo = 0;
 
     public Image() {
+        folder = new File("./src/Output");
+        if (folder.mkdirs()) {System.out.println("Made Output Folder.");}
         Out = new BufferedImage(1024, 1024, BufferedImage.TYPE_INT_ARGB);
         cleanPage();
         createFile();
