@@ -42,6 +42,12 @@ public class Main {
             System.out.println("File Number: " + (Image.fileNo-1));
             if (misclassifiedPoints == 0) {
                 check = false;
+            } else if (misclassifiedPoints > 6000) {
+                p.LR = 0.0002f;
+            } else if (misclassifiedPoints > 10) {
+                p.LR = 0.0000002f;
+            } else {
+                p.LR = 0.0000000002f;
             }
             misclassifiedPoints = 0;
             image.cleanPage();
