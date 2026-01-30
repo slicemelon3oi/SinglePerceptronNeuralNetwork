@@ -42,7 +42,7 @@ public class Image {
 
     public void cleanPage() {
         OutG = Out.createGraphics();
-        OutG.setColor(Color.white);
+        OutG.setColor(Color.black);
         OutG.fillRect(0,0,1024,1024);
         OutG.dispose();
     }
@@ -68,7 +68,7 @@ public class Image {
         } else {
             OutG.setColor(Color.red);
         }
-        OutG.fillOval(x,y,5,5);
+        OutG.fillOval(x,y,3,3);
         OutG.dispose();
     }
 
