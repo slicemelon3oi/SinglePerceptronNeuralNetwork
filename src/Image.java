@@ -35,8 +35,8 @@ public class Image {
         int x = pointData[0];
         int y = pointData[1];
         int x1,y1;
-        x1 = 512 + x;
-        y1 = 512 - y;
+        x1 = 511 + x;
+        y1 = 511 - y;
         return new int[] {x1,y1};
     }
 
