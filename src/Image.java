@@ -16,7 +16,10 @@ public class Image {
             File[] children = folder.listFiles();
             if (children != null) {
                 for (File child : children) {
-                    child.delete();
+                    boolean deleteCheck = child.delete();
+                    if (!deleteCheck) {
+                        System.err.println("Unable to delete file: " + child.getName());
+                    }
                 }
             }
             if (folder.delete()) {
